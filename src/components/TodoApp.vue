@@ -1,8 +1,12 @@
 <script setup>
 import { ref } from 'vue'
 
-const newTodo = ref('')
-const todos = ref([])
+const newTodo = ref('') //Creates a variable for the input box.
+const todos = ref([]) //Creates a variable for the list of todos.
+
+const backToHome = () => {
+  window.location.href = 'hello'
+}
 
 const addTodo = () => {
   if (newTodo.value.trim() === '') return
@@ -23,12 +27,13 @@ const removeTodo = (id) => {
 
 <template>
   <div class="todo-container">
-    <h1>📝 Vue 3 To-Do List</h1>
+    <h1> 📝To-Do List</h1>
+    <button @click="backToHome">back to home</button>
 
     <input
       v-model="newTodo"
       @keyup.enter="addTodo"
-      placeholder="Add new task..."
+      placeholder="add your task"
     />
 
     <button @click="addTodo">Add</button>
